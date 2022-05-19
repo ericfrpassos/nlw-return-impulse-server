@@ -7,6 +7,6 @@ app.use(cors());
 app.use(express.json());
 app.use(routes)
 
-app.listen(3333, () => {
-  console.log('Server in the air!')
+app.listen(process.env.PORT || 3333, () => {
+  console.log('HTTP Server in the air!')
 })
