@@ -7,18 +7,18 @@ export const routes = express.Router()
 
 routes.post('/feedbacks', async function(req, res) {
   const { type, comment, screenshot} = req.body;
-
   const feedbackRepository = new FeedbackRepository();
   const nodemailerMailAdapter = new NodemailerMailAdapter();
   const submitFeedbackUseCase = new SubmitFeedbackUseCase(
     feedbackRepository,
     nodemailerMailAdapter);
+
   await submitFeedbackUseCase.execute({
     type,
     comment,
     screenshot
   })
-
+  
   return res.status(201).send();
 })
 
